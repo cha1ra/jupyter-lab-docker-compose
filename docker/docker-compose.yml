@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  notebook:
+    container_name: jupyter-notebook
+    # https://hub.docker.com/r/jupyter/datascience-notebook
+    image: jupyter/scipy-notebook
+    ports:
+      - 8888:8888
+    environment:
+      # Jupyter Lab の起動
+      - JUPYTER_ENABLE_LAB=yes
+    volumes:
+      - ../work:/home/jovyan/work
+      - ../example:/home/jovyan/example
+    command: start-notebook.sh --NotebookApp.token=''
